@@ -2,7 +2,7 @@ import time
 
 # Import SPI library (for hardware SPI) and MCP3008 library.
 import Adafruit_MCP3008
-
+import socket
 import logging
 from influxdb import InfluxDBClient
 
