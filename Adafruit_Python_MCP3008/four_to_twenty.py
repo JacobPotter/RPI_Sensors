@@ -34,4 +34,5 @@ while True:
     mv_range = (3000 - 550)  
     sensorRange = (sensorMax - sensorMin)  
     sensorValue = (((millivolts - 550) * sensorRange) / mv_range) + sensorMin
+    print sensorValue
     time.sleep(0.5)
