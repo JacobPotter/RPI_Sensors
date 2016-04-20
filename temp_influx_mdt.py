@@ -26,7 +26,11 @@ def read_temp_raw():
 def temperature_data(temp_f):
   return [
       	{
-      	"measurement": "temperature_digital",
+      	"measurement": "temperature",
+        "tags": {
+            "sensor": "digital",
+            "host": os.uname()
+        },
         "fields": {
             "value": temp_f }}]
 
