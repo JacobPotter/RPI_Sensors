@@ -7,6 +7,7 @@ import time
 # Import SPI library (for hardware SPI) and MCP3008 library.
 #import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
+import os
 #import sys
 import logging
 from influxdb import InfluxDBClient
@@ -33,7 +34,11 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 def temperature_data(temp_f):
   return [
         {
-        "measurement": "Temperature",
+        "measurement": "temperature",
+        "tags": {
+            "sensor": "analog",
+            "host": os.uname()
+        }
         "fields": {
             "value": temp_f }}]
 
@@ -65,7 +70,7 @@ while True:
     print ("F: %s, C: %s" % (temp_F,temp_C))
     #sys.stdout.flush()
     temp_json=temperature_data(temp_F)
-    print temp_json
+    
     #log=
     influxClient.write_points(temp_json)
     time.sleep(1)
