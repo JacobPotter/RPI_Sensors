@@ -29,6 +29,8 @@ while True:
     millivolts = values[1] * (3300.0 / 1024.0)
     # Pause for half a second.
     print millivolts
+    sensorMax=100
+    sensorMin=0
     mv_range = (3000 - 550)  
     sensorRange = (sensorMax - sensorMin)  
     sensorValue = (((millivolts - 550) * sensorRange) / mv_range) + sensorMin
