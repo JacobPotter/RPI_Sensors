@@ -38,7 +38,7 @@ def temperature_data(temp_f):
         "tags": {
             "sensor": "analog",
             "host": os.uname()
-        }
+        },
         "fields": {
             "value": temp_f }}]
 
