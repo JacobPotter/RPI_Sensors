@@ -8,7 +8,9 @@ import time
 #import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 import os
-#import sys
+import socket
+import socket
+
 import logging
 from influxdb import InfluxDBClient
 
@@ -37,7 +39,7 @@ def temperature_data(temp_f):
         "measurement": "temperature",
         "tags": {
             "sensor": "analog",
-            "host": os.uname()
+            "host": socket.gethostname()
         },
         "fields": {
             "value": temp_f }}]

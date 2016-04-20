@@ -2,6 +2,7 @@ import os
 import glob
 import time
 import logging
+import socket
 
 from influxdb import InfluxDBClient
 
@@ -29,7 +30,7 @@ def temperature_data(temp_f):
       	"measurement": "temperature",
         "tags": {
             "sensor": "digital",
-            "host": os.uname()
+            "host": socket.gethostname()
         },
         "fields": {
             "value": temp_f }}]
