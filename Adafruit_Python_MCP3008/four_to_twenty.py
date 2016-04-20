@@ -17,10 +17,7 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 # mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 
-print('Reading MCP3008 values, press Ctrl-C to quit...')
-# Print nice channel column headers.
-print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*range(8)))
-print('-' * 57)
+
 # Main program loop.
 while True:
     # Read all the ADC channel values in a list.
@@ -29,6 +26,7 @@ while True:
         # The read_adc function will get the value of the specified channel (0-7).
         values[i] = mcp.read_adc(i)
     # Print the ADC values.
-    print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*values))
+    millivolts = values[1] * (3300.0 / 1024.0)
     # Pause for half a second.
+    print millivolts
     time.sleep(0.5)
