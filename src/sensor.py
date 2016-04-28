@@ -7,6 +7,10 @@ import logging
 from influxdb import InfluxDBClient
 import ConfigParser
 
+import os
+import glob
+
+
 # Software SPI configuration:
 CLK  = 18
 MISO = 23
