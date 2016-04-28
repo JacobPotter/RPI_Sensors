@@ -70,7 +70,7 @@ def sensor_conversion(sensorMin,sensorMax, millivolts):
     sensorMin=sensorMin
     mv_range=MV_MAX - MV_MIN
     sensorRange = (sensorMax - sensorMin)  
-    sensorValue = (((millivolts - 550) * sensorRange) / mv_range) + sensorMin
+    sensorValue = (((millivolts - MV_MIN) * sensorRange) / mv_range) + sensorMin
     return sensorValue
 
 def get_config(pinNumber):
