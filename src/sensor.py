@@ -43,7 +43,7 @@ def influx_setup():
     dbuser=config_section_map("InfluxClient")['user']
     dbpwd=config_section_map("InfluxClient")['password']
     dbname=config_section_map("InfluxClient")['databasename']
-    global influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
+    influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
 
 
 
@@ -165,7 +165,7 @@ config.read("sensor_config.ini")
 
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 
-influxClient= None 
+influxClient = None 
 
 influx_setup()
 
