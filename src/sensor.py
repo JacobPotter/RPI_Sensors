@@ -167,18 +167,18 @@ config = ConfigParser.ConfigParser()
 
 config.read("sensor_config.ini")
 
-# logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
+logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 
-logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
-rootLogger = logging.getLogger()
+# logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+# rootLogger = logging.getLogger()
 
-fileHandler = logging.FileHandler("{0}/{1}.log".format(".", "sensor"))
-fileHandler.setFormatter(logFormatter)
-rootLogger.addHandler(fileHandler)
+# fileHandler = logging.FileHandler("{0}/{1}.log".format(".", "sensor"))
+# fileHandler.setFormatter(logFormatter)
+# rootLogger.addHandler(fileHandler)
 
-consoleHandler = logging.StreamHandler()
-consoleHandler.setFormatter(logFormatter)
-rootLogger.addHandler(consoleHandler)
+# consoleHandler = logging.StreamHandler()
+# consoleHandler.setFormatter(logFormatter)
+# rootLogger.addHandler(consoleHandler)
 
 influxClient = None 
 
