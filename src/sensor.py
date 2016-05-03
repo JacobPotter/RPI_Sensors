@@ -135,6 +135,7 @@ def push_value(value, pinNumber):
     dict_config=get_config(pinNumber)
     if dict_config['raw_value'] == "True":
         log=influxClient.write_points(sensor_data_influx(adc_to_millivolts(value), dict_config['name'], "true"))
+        logging.info(log)
     else:
         log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], adc_to_millivolts(value)), dict_config['name'], "false"))
 
@@ -167,18 +168,18 @@ config = ConfigParser.ConfigParser()
 
 config.read("sensor_config.ini")
 
-# logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
+logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 
-logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
-rootLogger = logging.getLogger()
+# logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+# rootLogger = logging.getLogger()
 
-fileHandler = logging.FileHandler("{0}/{1}.log".format(".", "sensor"))
-fileHandler.setFormatter(logFormatter)
-rootLogger.addHandler(fileHandler)
+# fileHandler = logging.FileHandler("{0}/{1}.log".format(".", "sensor"))
+# fileHandler.setFormatter(logFormatter)
+# rootLogger.addHandler(fileHandler)
 
-consoleHandler = logging.StreamHandler()
-consoleHandler.setFormatter(logFormatter)
-rootLogger.addHandler(consoleHandler)
+# consoleHandler = logging.StreamHandler()
+# consoleHandler.setFormatter(logFormatter)
+# rootLogger.addHandler(consoleHandler)
 
 influxClient = None 
 
