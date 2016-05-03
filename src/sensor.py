@@ -48,7 +48,7 @@ def influx_setup():
     dbuser=config_section_map("InfluxClient")['user']
     dbpwd=config_section_map("InfluxClient")['password']
     dbname=config_section_map("InfluxClient")['databasename']
-    influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
+    global influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
 
 
 
@@ -184,7 +184,7 @@ logging.info('execution started')
 # consoleHandler.setFormatter(logFormatter)
 # rootLogger.addHandler(consoleHandler)
 
-influxClient = None 
+
 
 influx_setup()
 
