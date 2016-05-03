@@ -198,7 +198,7 @@ while True:
         # The read_adc function will get the value of the specified channel (0-7).
         
         values[i] = mcp.read_adc(i)
-        logging.debug('ADC value %d'%values[i])
+        logging.debug('ADC value %d, Pin: %d'%values[i], i)
         if values[i] >= MV_MIN and values[i] <= MV_MAX:
             push_value(values[i], i)
     time.sleep(0.5)
