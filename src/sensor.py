@@ -44,8 +44,6 @@ def config_section_map(section):
 
 
 
-
-
 def sensor_data_influx(sensorValue, sensorTag,rawData):
   return [
       	{
@@ -130,10 +128,10 @@ def push_value(value, pinNumber):
     dict_config=get_config(pinNumber)
     logging.debug(dict_config)
     if dict_config['raw_value'] == "True":
-        log=influxClient.write_points(sensor_data_influx(adc_to_millivolts(value), dict_config['name'], "true"))
+        log=influxClient.write_points(sensor_data_influx(value, dict_config['name'], "true"))
         logging.info(log)
     else:
-        log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], adc_to_millivolts(value)), dict_config['name'], "false"))
+        log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], value), dict_config['name'], "false"))
 
 # def read_digital_temp_raw():
 #     os.system('modprobe w1-gpio')
@@ -198,6 +196,7 @@ while True:
         # The read_adc function will get the value of the specified channel (0-7).
         
         values[i] = mcp.read_adc(i)
+        values[i] = adc_to_millivolts(values[i])
         logging.debug('ADC value %d, Pin: %d'%values[i], i)
         if values[i] >= MV_MIN and values[i] <= MV_MAX:
             push_value(values[i], i)
