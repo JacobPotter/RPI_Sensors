@@ -1,0 +1,75 @@
+[InfluxClient]
+Host: localhost
+Port: 8086
+User: user
+Password: pwd
+DatabaseName: sensor_test_database
+
+[ChannelZero]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_0
+
+[ChannelOne]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_1
+
+
+[ChannelTwo]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+ 
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_2
+
+
+[ChannelThree]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+ 
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_3
+
+[ChannelFour]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+ 
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_4
+
+[ChannelFive]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+ 
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_5
+
+[ChannelSix]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_6
+
+[ChannelSeven]
+SendRawValue: True
+#SensorMin:
+#SensorMax:
+## MeasurementName will default to the pin number when converting values on client level
+MeasurementName: Pin_7
+
+[DigitalTemperature]
+Enable: True
+
+[Logging]
+LogLevel: Debug
+#LogFileLocation
