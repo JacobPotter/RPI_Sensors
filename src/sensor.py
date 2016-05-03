@@ -77,59 +77,59 @@ def sensor_conversion(SensorMin,SensorMax, millivolts):
 def get_config(pinNumber):
     if pinNumber==0:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelZero")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelZero")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelZero")['SensorMax']
-        dict1['name']=config_section_map("ChannelZero")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelZero")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelZero")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelZero")['SensorMax']
+        dict1['name']=config_section_map("ChannelZero")['measurementname']
         return dict1
     elif pinNumber==1:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelOne")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelOne")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelOne")['SensorMax']
-        dict1['name']=config_section_map("ChannelOne")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelOne")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelOne")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelOne")['SensorMax']
+        dict1['name']=config_section_map("ChannelOne")['measurementname']
         return dict1
     elif pinNumber==2:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelTwo")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelTwo")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelTwo")['SensorMax']
-        dict1['name']=config_section_map("ChannelTwo")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelTwo")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelTwo")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelTwo")['SensorMax']
+        dict1['name']=config_section_map("ChannelTwo")['measurementname']
         return dict1
     elif pinNumber==3:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelThree")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
-        dict1['name']=config_section_map("ChannelThree")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelThree")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+        dict1['name']=config_section_map("ChannelThree")['measurementname']
         return dict1
     elif pinNumber==4:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelFour")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelFour")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelFour")['SensorMax']
-        dict1['name']=config_section_map("ChannelFour")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelFour")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelFour")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelFour")['SensorMax']
+        dict1['name']=config_section_map("ChannelFour")['measurementname']
         return dict1
     elif pinNumber==5:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelFive")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelFive")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelFive")['SensorMax']
-        dict1['name']=config_section_map("ChannelFive")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelFive")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelFive")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelFive")['SensorMax']
+        dict1['name']=config_section_map("ChannelFive")['measurementname']
         return dict1
     elif pinNumber==6:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelSix")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelSix")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelSix")['SensorMax']
-        dict1['name']=config_section_map("ChannelSix")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelSix")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelSix")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelSix")['SensorMax']
+        dict1['name']=config_section_map("ChannelSix")['measurementname']
         return dict1
     elif pinNumber==7:
         dict1={}
-        dict1['raw_value']=config_section_map("ChannelSeven")['SendRawValue']
-        dict1['min_value']=config_section_map("ChannelSeven")['SensorMin']
-        dict1['max_value']=config_section_map("ChannelSeven")['SensorMax']
-        dict1['name']=config_section_map("ChannelSeven")['MeasurementName']
+        dict1['raw_value']=config_section_map("ChannelSeven")['sendrawvalue']
+        # dict1['min_value']=config_section_map("ChannelSeven")['SensorMin']
+        # dict1['max_value']=config_section_map("ChannelSeven")['SensorMax']
+        dict1['name']=config_section_map("ChannelSeven")['measurementname']
         return dict1
 
 def push_value(value, pinNumber):
