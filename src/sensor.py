@@ -197,7 +197,7 @@ while True:
         
         values[i] = mcp.read_adc(i)
         values[i] = adc_to_millivolts(values[i])
-        logging.debug('ADC value %d, Pin: %d'%values[i], i)
+        # logging.debug('ADC value %d, Pin: %d' % values[i], i)
         if values[i] >= MV_MIN and values[i] <= MV_MAX:
             push_value(values[i], i)
     time.sleep(0.5)
