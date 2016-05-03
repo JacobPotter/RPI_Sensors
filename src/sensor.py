@@ -38,6 +38,7 @@ def config_section_map(section):
         except:
             print("exception on %s!" % option)
             dict1[option] = None
+    logging.debug('Dict in section map %s'%dict1)
     return dict1
 
 
