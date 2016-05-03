@@ -133,7 +133,7 @@ def get_config(pinNumber):
 
 def push_value(value, pinNumber):
     dict_config=get_config(pinNumber)
-    logging.debug('dict_config')
+    logging.debug(dict_config)
     if dict_config['raw_value'] == "True":
         log=influxClient.write_points(sensor_data_influx(adc_to_millivolts(value), dict_config['name'], "true"))
         logging.info(log)
@@ -198,8 +198,9 @@ while True:
     values = [0]*8
     for i in range(8):
         # The read_adc function will get the value of the specified channel (0-7).
-        logging.debug(values[i])
+        
         values[i] = mcp.read_adc(i)
+        logging.debug('ADC value %d'%values[i])
         if values[i] >= MV_MIN and values[i] <= MV_MAX:
             push_value(values[i], i)
     time.sleep(0.5)
