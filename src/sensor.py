@@ -169,6 +169,7 @@ config = ConfigParser.ConfigParser()
 config.read("sensor_config.ini")
 
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
+logging.info('execution started')
 
 # logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 # rootLogger = logging.getLogger()
@@ -186,7 +187,7 @@ influxClient = None
 influx_setup()
 
 #Main loop to read adc values
-
+logging.debug('looping')
 while True:
     #Check if digital sensor setup
     # if config_section_map("DigitalTemperature")['enable']=="true":
