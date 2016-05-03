@@ -133,7 +133,7 @@ def get_config(pinNumber):
 
 def push_value(value, pinNumber):
     dict_config=get_config(pinNumber)
-    if dict_config['raw_value'] == True:
+    if dict_config['raw_value'] == "True":
         log=influxClient.write_points(sensor_data_influx(adc_to_millivolts(value), dict_config['name'], "true"))
     else:
         log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], adc_to_millivolts(value)), dict_config['name'], "false"))
