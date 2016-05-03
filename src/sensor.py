@@ -42,13 +42,7 @@ def config_section_map(section):
     return dict1
 
 
-def influx_setup():
-    dbhost=config_section_map("InfluxClient")['host']
-    dbport=config_section_map("InfluxClient")['port']
-    dbuser=config_section_map("InfluxClient")['user']
-    dbpwd=config_section_map("InfluxClient")['password']
-    dbname=config_section_map("InfluxClient")['databasename']
-    global influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
+
 
 
 
@@ -184,9 +178,12 @@ logging.info('execution started')
 # consoleHandler.setFormatter(logFormatter)
 # rootLogger.addHandler(consoleHandler)
 
-
-
-influx_setup()
+dbhost=config_section_map("InfluxClient")['host']
+dbport=config_section_map("InfluxClient")['port']
+dbuser=config_section_map("InfluxClient")['user']
+dbpwd=config_section_map("InfluxClient")['password']
+dbname=config_section_map("InfluxClient")['databasename']
+influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
 
 #Main loop to read adc values
 logging.debug('looping')
