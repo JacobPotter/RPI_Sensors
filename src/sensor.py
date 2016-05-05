@@ -158,6 +158,7 @@ def push_value(value, pinNumber):
 #         return temp_f    
 
 # Main program 
+print os.path.join(os.path.dirname(__file__))
 config = ConfigParser.ConfigParser()
 
 config.read("./sensor_config.ini")
@@ -185,6 +186,7 @@ influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, passwor
 
 #Main loop to read adc values
 logging.debug('looping')
+
 while True:
     #Check if digital sensor setup
     # if config_section_map("DigitalTemperature")['enable']=="true":
