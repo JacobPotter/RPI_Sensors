@@ -158,10 +158,12 @@ def push_value(value, pinNumber):
 #         return temp_f    
 
 # Main program 
-print os.path.join(os.path.dirname(__file__))
+path=os.path.realpath(__file__)
+path=path[:-10]
+print path
 config = ConfigParser.ConfigParser()
 
-config.read("./sensor_config.ini")
+config.read("%s/sensor_config.ini" % path)
 
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 logging.info('execution started')
