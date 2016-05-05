@@ -160,7 +160,7 @@ def push_value(value, pinNumber):
 # Main program 
 config = ConfigParser.ConfigParser()
 
-config.read("sensor_config.ini")
+config.read("./sensor_config.ini")
 
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 logging.info('execution started')
