@@ -204,4 +204,5 @@ while True:
         # logging.debug('ADC value %d, Pin: %d' % values[i], i)
         if values[i] >= MV_MIN and values[i] <= MV_MAX:
             push_value(values[i], i)
+        time.sleep(1)
     time.sleep(1)
