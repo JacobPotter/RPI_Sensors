@@ -129,7 +129,7 @@ def get_config(pinNumber):
                 dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
             return dict1
     except Exception, e:
-        logging.severe('Config error')
+        logging.error('Config error')
         raise e
     
 
@@ -143,7 +143,7 @@ def push_value(value, pinNumber):
         else:
             log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], value), dict_config['name'], "false"))
     except Exception, e:
-        logging.severe('Error Writing to DB or connection lost')
+        logging.error('Error Writing to DB or connection lost')
         raise e
 
 # Main program 
@@ -176,7 +176,7 @@ try:
     #Main loop to read adc values
     
 except Exception, e:
-    logging.severe('Influx DB Connection error')
+    logging.error('Influx DB Connection error')
     raise e
 logging.debug('looping')
 while True:
