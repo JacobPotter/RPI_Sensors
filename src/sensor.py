@@ -12,14 +12,10 @@ import glob
 
 
 # Software SPI configuration:
-CLK  = 11
-MISO = 9
-MOSI = 10
-CS   = 8
-mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
-MV_MAX=2950
-MV_MIN=550
+
+MV_MAX=3000
+MV_MIN=600
 
 # Hardware SPI configuration:
 # SPI_PORT   = 0
@@ -56,7 +52,7 @@ def sensor_data_influx(sensorValue, sensorTag,rawData):
             "value": sensorValue }}]
 #default reference voltage should be 3.3
 def adc_to_millivolts(adcValue):
-    return adcValue * (5000.0 / 1024.0)
+    return adcValue * (config_section_map('Etc')['referencevoltage'] / 1023.0)
 
 def sensor_conversion(SensorMin,SensorMax, millivolts):
     SensorMax=SensorMax
@@ -67,95 +63,88 @@ def sensor_conversion(SensorMin,SensorMax, millivolts):
     return sensorValue
 
 def get_config(pinNumber):
-    if pinNumber==0:
+    try:
+        if pinNumber==0:
         dict1={}
         dict1['raw_value']=config_section_map("ChannelZero")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelZero")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelZero")['SensorMax']
         dict1['name']=config_section_map("ChannelZero")['measurementname']
+        if dict1['raw_value'] == "False":
+            dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+            dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
         return dict1
-    elif pinNumber==1:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelOne")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelOne")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelOne")['SensorMax']
-        dict1['name']=config_section_map("ChannelOne")['measurementname']
-        return dict1
-    elif pinNumber==2:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelTwo")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelTwo")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelTwo")['SensorMax']
-        dict1['name']=config_section_map("ChannelTwo")['measurementname']
-        return dict1
-    elif pinNumber==3:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelThree")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
-        dict1['name']=config_section_map("ChannelThree")['measurementname']
-        return dict1
-    elif pinNumber==4:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelFour")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelFour")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelFour")['SensorMax']
-        dict1['name']=config_section_map("ChannelFour")['measurementname']
-        return dict1
-    elif pinNumber==5:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelFive")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelFive")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelFive")['SensorMax']
-        dict1['name']=config_section_map("ChannelFive")['measurementname']
-        return dict1
-    elif pinNumber==6:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelSix")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelSix")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelSix")['SensorMax']
-        dict1['name']=config_section_map("ChannelSix")['measurementname']
-        return dict1
-    elif pinNumber==7:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelSeven")['sendrawvalue']
-        # dict1['min_value']=config_section_map("ChannelSeven")['SensorMin']
-        # dict1['max_value']=config_section_map("ChannelSeven")['SensorMax']
-        dict1['name']=config_section_map("ChannelSeven")['measurementname']
-        return dict1
+        elif pinNumber==1:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelOne")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelOne")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==2:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelTwo")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelTwo")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==3:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelThree")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelThree")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==4:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelFour")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelFour")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==5:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelFive")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelFive")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==6:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelSix")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelSix")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+        elif pinNumber==7:
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelSeven")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelSeven")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
+    except Exception, e:
+        logging.severe('Config error')
+        raise e
+    
 
 def push_value(value, pinNumber):
     dict_config=get_config(pinNumber)
     logging.debug(dict_config)
-    if dict_config['raw_value'] == "True":
-        log=influxClient.write_points(sensor_data_influx(value, dict_config['name'], "true"))
-        logging.info(log)
-    else:
-        log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], value), dict_config['name'], "false"))
-
-# def read_digital_temp_raw():
-#     os.system('modprobe w1-gpio')
-#     os.system('modprobe w1-therm')
-#     base_dir='/sys/bus/w1/devices/'
-#     device_folder= glob.glob(base_dir+'28*')[0]
-#     device_file=device_folder+'/w1_slave'
-#     f = open(device_file,'r')
-#     lines = f.readlines()
-#     f.close()
-#     return lines
-
-
-# def convert_digital_temp():
-#     lines=read_digital_temp_raw()
-#     while lines[0].strip()[-3:] != 'YES':
-#         time.sleep(0.2)
-#         lines = read_temp_raw()
-#     equals_pos = lines[1].find('t=')
-#     if equals_pos != -1:
-#         temp_string = lines[1][equals_pos+2:]
-#         temp_c = float(temp_string) / 1000.0
-#         temp_f = temp_c * 9.0 / 5.0 + 32.0
-#         return temp_f    
+    try:
+        if dict_config['raw_value'] == "True":
+            log=influxClient.write_points(sensor_data_influx(value, dict_config['name'], "true"))
+            logging.info(log)
+        else:
+            log=influxClient.write_points(sensor_data_influx(sensor_conversion(dict_config['min_value'],dict_config['max_value'], value), dict_config['name'], "false"))
+    except Exception, e:
+        logging.severe('Error Writing to DB or connection lost')
+        raise e
 
 # Main program 
 path=os.path.realpath(__file__)
@@ -168,27 +157,28 @@ config.read("%s/sensor_config.ini" % path)
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 logging.info('execution started')
 
-# logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
-# rootLogger = logging.getLogger()
+CLK  = config_section_map("Etc")['SPICLK']
+MISO = config_section_map("Etc")['SPIMISO']
+MOSI = config_section_map("Etc")['SPIMOSI']
+CS   = config_section_map("Etc")['SPICS']
+mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
-# fileHandler = logging.FileHandler("{0}/{1}.log".format(".", "sensor"))
-# fileHandler.setFormatter(logFormatter)
-# rootLogger.addHandler(fileHandler)
-
-# consoleHandler = logging.StreamHandler()
-# consoleHandler.setFormatter(logFormatter)
-# rootLogger.addHandler(consoleHandler)
 
 dbhost=config_section_map("InfluxClient")['host']
 dbport=config_section_map("InfluxClient")['port']
 dbuser=config_section_map("InfluxClient")['user']
 dbpwd=config_section_map("InfluxClient")['password']
 dbname=config_section_map("InfluxClient")['databasename']
-influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
 
-#Main loop to read adc values
+try:
+    influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
+    influxClient.create(dbname)
+    #Main loop to read adc values
+    
+except Exception, e:
+    loggin.severe('Influx DB Connection error')
+    raise e
 logging.debug('looping')
-
 while True:
     #Check if digital sensor setup
     # if config_section_map("DigitalTemperature")['enable']=="true":

@@ -1,7 +1,7 @@
 [InfluxClient]
 Host: localhost
 Port: 8086
-User: user
+User: mdtadmin
 Password: pwd
 DatabaseName: sensor_test_database
 
@@ -67,9 +67,10 @@ SendRawValue: True
 ## MeasurementName will default to the pin number when converting values on client level
 MeasurementName: Pin_7
 
-[DigitalTemperature]
-Enable: True
+[Etc]
+ReferenceVoltage:3300
+SPICLK : 18
+SPIMISO : 23
+SPIMOSI : 24
+SPICS : 25
 
-[Logging]
-LogLevel: Debug
-#LogFileLocation
