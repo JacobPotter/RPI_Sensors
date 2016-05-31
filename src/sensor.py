@@ -172,7 +172,7 @@ dbname=config_section_map("InfluxClient")['databasename']
 
 try:
     influxClient = InfluxDBClient(host=dbhost, port=dbport, username=dbuser, password=dbpwd, database=dbname)
-    influxClient.create(dbname)
+    influxClient.create_database(dbname)
     #Main loop to read adc values
     
 except Exception, e:
