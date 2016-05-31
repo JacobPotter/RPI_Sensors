@@ -65,13 +65,13 @@ def sensor_conversion(SensorMin,SensorMax, millivolts):
 def get_config(pinNumber):
     try:
         if pinNumber==0:
-        dict1={}
-        dict1['raw_value']=config_section_map("ChannelZero")['sendrawvalue']
-        dict1['name']=config_section_map("ChannelZero")['measurementname']
-        if dict1['raw_value'] == "False":
-            dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
-            dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
-        return dict1
+            dict1={}
+            dict1['raw_value']=config_section_map("ChannelZero")['sendrawvalue']
+            dict1['name']=config_section_map("ChannelZero")['measurementname']
+            if dict1['raw_value'] == "False":
+                dict1['min_value']=config_section_map("ChannelThree")['SensorMin']
+                dict1['max_value']=config_section_map("ChannelThree")['SensorMax']
+            return dict1
         elif pinNumber==1:
             dict1={}
             dict1['raw_value']=config_section_map("ChannelOne")['sendrawvalue']
