@@ -52,7 +52,7 @@ def sensor_data_influx(sensorValue, sensorTag,rawData):
             "value": sensorValue }}]
 #default reference voltage should be 3.3
 def adc_to_millivolts(adcValue):
-    return adcValue * (config_section_map('Etc')['referencevoltage'] / 1023.0)
+    return adcValue * (float(config_section_map('Etc')['referencevoltage']) / 1023.0)
 
 def sensor_conversion(SensorMin,SensorMax, millivolts):
     SensorMax=SensorMax
