@@ -157,10 +157,10 @@ config.read("%s/sensor_config.ini" % path)
 logging.basicConfig(filename='sensor.log', level=logging.DEBUG)
 logging.info('execution started')
 
-CLK  = config_section_map("Etc")['SPICLK']
-MISO = config_section_map("Etc")['SPIMISO']
-MOSI = config_section_map("Etc")['SPIMOSI']
-CS   = config_section_map("Etc")['SPICS']
+CLK  = config_section_map("Etc")['spiclk']
+MISO = config_section_map("Etc")['spimiso']
+MOSI = config_section_map("Etc")['spimosi']
+CS   = config_section_map("Etc")['spics']
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 
