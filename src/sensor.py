@@ -176,7 +176,7 @@ try:
     #Main loop to read adc values
     
 except Exception, e:
-    loggin.severe('Influx DB Connection error')
+    logging.severe('Influx DB Connection error')
     raise e
 logging.debug('looping')
 while True:
