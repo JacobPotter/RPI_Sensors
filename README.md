@@ -13,6 +13,7 @@ sudo python setup.py develop
 ```
 3.Copy ini
 `cp sensor_config.ini.tmp sensor_config.ini`
+
 4.Alter ini files to correct settings (follow comments in ini file)
 5.Install Supervisor
 ```
