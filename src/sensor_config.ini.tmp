@@ -1,9 +1,14 @@
+# Values for InfluxDB
+# will create DB if it doesnt already exist
 [InfluxClient]
 Host: localhost
 Port: 8086
 User: mdtuser
 Password: pwd
 DatabaseName: sensor_test_database
+
+# For Channels 0-7, set the measurement name. If you want the conversion done before the data is sent to influxdb, then set SendRawValue to False and set the 
+# range of the sensor with SensorMin and SensorMax
 
 [ChannelZero]
 SendRawValue: True
@@ -24,7 +29,6 @@ MeasurementName: Pin_1
 SendRawValue: True
 #SensorMin:
 #SensorMax:
- 
 ## MeasurementName will default to the pin number when converting values on client level
 MeasurementName: Pin_2
 
@@ -33,7 +37,6 @@ MeasurementName: Pin_2
 SendRawValue: True
 #SensorMin:
 #SensorMax:
- 
 ## MeasurementName will default to the pin number when converting values on client level
 MeasurementName: Pin_3
 
@@ -41,7 +44,6 @@ MeasurementName: Pin_3
 SendRawValue: True
 #SensorMin:
 #SensorMax:
- 
 ## MeasurementName will default to the pin number when converting values on client level
 MeasurementName: Pin_4
 
@@ -49,7 +51,6 @@ MeasurementName: Pin_4
 SendRawValue: True
 #SensorMin:
 #SensorMax:
- 
 ## MeasurementName will default to the pin number when converting values on client level
 MeasurementName: Pin_5
 
@@ -68,7 +69,11 @@ SendRawValue: True
 MeasurementName: Pin_7
 
 [Etc]
+# Reference voltage Used on the MCP3008 chip, more than likely 3300 or 5000
 ReferenceVoltage:3300
+
+# Software SPI Pins used for MCP3008
+
 SPICLK : 18
 SPIMISO : 23
 SPIMOSI : 24
